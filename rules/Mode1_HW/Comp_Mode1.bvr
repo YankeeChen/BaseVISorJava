@@ -1,0 +1,150 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <!-- include the OWL 2 RL Axioms -->
+      <include name="owl2rl"/>
+
+      <include lang="owl2rl" relativePath="../../ontology/ConcertOlogy5_Abox.owl" />
+
+      <include lang="BaseVISor" relativePath="Comp_Mode1_Composition.bvr" />
+
+
+<rule name="Mode1 rule">
+    <body>
+        <triple>
+            <subject variable="_Ind"/>
+            <predicate resource="rdf:type"/>
+            <object resource="concerto:Mode1"/>
+        </triple>
+    </body>
+
+    <head>
+        <!--bind variable="_Ind.params">
+            <makeAsset><_Ind/>.params</makeAsset>
+        </bind>
+        <bind variable="_Ind.params.0">
+            <makeAsset><_Ind/>.params.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.params.0.param">
+            <makeAsset><_Ind/>.params.0.param</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.Clk.clk">
+            <makeAsset><_Ind/>.Clk.clk</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.in.in_re">
+            <makeAsset><_Ind/>.in.in_re</makeAsset>
+        </bind>
+        <bind variable="_Ind.in.in_im">
+            <makeAsset><_Ind/>.in.in_im</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.in.in_data">
+            <makeAsset><_Ind/>.in.in_data</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.in_direction">
+            <makeAsset><_Ind/>.in.in_direction</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.in_th">
+            <makeAsset><_Ind/>.in.in_th</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.out.Jamming_out">
+            <makeAsset><_Ind/>.out.Jamming_out</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.InSig.Mode1_START">
+            <makeAsset><_Ind/>.InSig.Mode1_START</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.InSig.Mode1_STOP">
+            <makeAsset><_Ind/>.InSig.Mode1_STOP</makeAsset>
+        </bind-->
+
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                <obr:hasName datatype="xsd:string">Mode1</obr:hasName>
+                <!--obr:hasFormalParameters variable="_Ind.params">
+                    <rdf:type resource="obr:MethodParameterArray" />
+                    <rdf:type resource="owl:NamedIndividual" />
+                    <obr:isSequenceOf variable="_Ind.params.0">
+                        <rdf:type resource="obr:MethodParameterArrayElement" />
+                        <rdf:type resource="owl:NamedIndividual" />
+                        <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                        <obr:hasParameter variable="_Ind.params.0.param">
+                            <rdf:type resource="obr:StringParameter" />
+                            <rdf:type resource="owl:NamedIndividual" />
+                            <obr:hasName datatype="xsd:string">tag</obr:hasName>
+                        </obr:hasParameter>
+                    </obr:isSequenceOf>
+                </obr:hasFormalParameters-->
+
+                <obr:hasExtClock variable="_Ind.Clk.clk">
+                    <rdf:type resource="obr:ExternalClock"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+
+                <!--obr:hasInputPort variable="_Ind.in.in_re">
+                    <rdf:type resource="concerto:FloatArrayInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">in_re</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasInputPort variable="_Ind.in.in_im">
+                    <rdf:type resource="concerto:FloatArrayInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">in_im</obr:hasName>
+                </obr:hasInputPort-->
+                
+                <obr:hasInputPort variable="_Ind.in.in_data">
+                    <rdf:type resource="concerto:ComplexArrayOfArrayInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">in_data</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasInputPort variable="_Ind.in.in_direction">
+                    <rdf:type resource="concerto:IntegerArrayInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">in_direction</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasInputPort variable="_Ind.in.in_th">
+                    <rdf:type resource="concerto:ComplexArrayInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">in_th</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasOutputPort variable="_Ind.out.Jamming_out">
+                    <rdf:type resource="concerto:ComplexArrayOfArrayOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_out</obr:hasName>
+                </obr:hasOutputPort>
+
+                <!--obr:hasIncomingSignal variable="_Ind.InSig.Mode1_START">
+                    <rdf:type resource="obr:IncomingSignal"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Mode1_START</obr:hasName>
+                </obr:hasIncomingSignal>
+
+                <obr:hasIncomingSignal variable="_Ind.InSig.Mode1_STOP">
+                    <rdf:type resource="obr:IncomingSignal"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Mode1_STOP</obr:hasName>
+                </obr:hasIncomingSignal-->
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+</BaseVISor>

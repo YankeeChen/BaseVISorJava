@@ -1,0 +1,369 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+<!-- FFT Clock rule -->
+<rule name="FFT clock rule">
+   <body>
+       <Individual variable="_Ind">
+           <rdf:type resource="concerto:SpectrumSensing"/>
+           <obr:hasSubComponent anonVar="true" >
+               <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+               <obr:hasExtClock variable="_subCompClk">
+                   <obr:hasName datatype="xsd:string">clk</obr:hasName>
+               </obr:hasExtClock>
+           </obr:hasSubComponent>
+           <obr:hasExtClock variable="_compClk">
+               <obr:hasName datatype="xsd:string">clk</obr:hasName>
+           </obr:hasExtClock>
+       </Individual>
+   </body>
+   <head>
+       <assert>
+           <Individual variable="_compClk">
+               <obr:drivesClock variable="_subCompClk"/>
+           </Individual>
+       </assert>
+   </head>
+</rule>
+
+
+<!-- MAGNITUDE clock rule -->
+<rule name="Magnitude clock rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent anonVar="true" >
+                <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+                <obr:hasExtClock variable="_subCompClk">
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+            </obr:hasSubComponent>
+            <obr:hasExtClock variable="_compClk">
+                <obr:hasName datatype="xsd:string">clk</obr:hasName>
+            </obr:hasExtClock>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_compClk">
+                <obr:drivesClock variable="_subCompClk"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!-- THRESHOLD clock rule -->
+<rule name="Threshold clock rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent anonVar="true" >
+                <obr:hasName datatype="xsd:string">Threshold</obr:hasName>
+                <obr:hasExtClock variable="_subCompClk">
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+            </obr:hasSubComponent>
+            <obr:hasExtClock variable="_compClk">
+                <obr:hasName datatype="xsd:string">clk</obr:hasName>
+            </obr:hasExtClock>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_compClk">
+                <obr:drivesClock variable="_subCompClk"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!--rule name="Magnitude port in_re rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">magnitude_in_re</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">fft_out_re</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Magnitude port in_im rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">magnitude_in_im</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">fft_out_im</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule-->
+
+<rule name="Magnitude port in_data rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">magnitude_in_data</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">fft_out_data</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+<!--rule name="Threshold port in_re rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Threshold</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">threshold_data_in</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">magnitude_out_amp</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule-->
+
+<rule name="Threshold port in_data rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Threshold</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">threshold_in_data</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">magnitude_out_amp</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!-- External Port Rules -->
+<!--rule name="External in_re rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_re</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">fft_in_re</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External in_im rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_im</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">fft_in_im</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule-->
+<rule name="External in_data rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_data</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">fft_in_data</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External in_direction rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_direction</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">FFT</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">fft_in_direction</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External in_th rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_th</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Threshold</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">threshold_in_th</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External OutputPort(bit_out) rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:SpectrumSensing"/>
+            <obr:hasOutputPort variable="_outPort">
+                <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+            </obr:hasOutputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Threshold</obr:hasName>
+                <obr:hasOutputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">threshold_bit_out</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_subCompPort">
+                <obr:drivesPort variable="_outPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+</BaseVISor>

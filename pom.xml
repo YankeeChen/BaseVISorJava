@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.neu.ece.concerto</groupId>
+	<artifactId>modemodelgenerator</artifactId>
+	<version>1.0</version>
+	<name>modemodelgenerator</name>
+	<description>Concerto research project</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<commons.io.version>2.6</commons.io.version>
+		<commons.lang.version>3.6</commons.lang.version>
+		<slf4j.version>1.7.25</slf4j.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang.version}</version>
+		</dependency>
+		<!--dependency>
+			<groupId>net.sourceforge.owlapi</groupId>
+			<artifactId>owlapi-distribution</artifactId>
+			<version>3.3</version>
+		</dependency-->
+        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.8</version>
+        </dependency>
+		<!-- BaseVISor Dependencies -->
+		<dependency>
+			<groupId>com.vistology.bvr</groupId>
+			<artifactId>basevisor</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vistology.bvr</groupId>
+			<artifactId>owl-api-parsers</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vistology.bvr</groupId>
+			<artifactId>krdf</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vistology.bvr</groupId>
+			<artifactId>kxsd</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.icl.saxon</groupId>
+			<artifactId>saxon</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.icl.saxon</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.icl.saxon</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thaiopensource.datatype.xsd</groupId>
+			<artifactId>xsdregex</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+
+
+	<repositories>
+		<repository>
+			<id>my-local-repo</id>
+			<url>file://${project.basedir}/lib</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>edu.neu.ece.concerto.bvrjava.RunBaseVISor</mainClass>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

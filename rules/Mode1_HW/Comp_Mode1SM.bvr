@@ -1,0 +1,182 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <include lang="BaseVISor" relativePath="Comp_Mode1SM_SM.bvr" />
+
+      <rule name="Mode1SM Rule">
+          <body>
+              <triple>
+                  <subject variable="_Ind"/>
+                  <predicate resource="rdf:type"/>
+                  <object resource="concerto:Mode1SM"/>
+              </triple>
+          </body>
+
+          <head>
+
+              <!--bind variable="_Ind.params">
+                      <makeAsset><_Ind/>.params</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.params.0">
+                      <makeAsset><_Ind/>.params.0</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.params.0.param">
+                      <makeAsset><_Ind/>.params.0.param</makeAsset>
+              </bind-->
+
+              <bind variable="_Ind.Clk.clk">
+                  <makeAsset><_Ind/>.Clk.clk</makeAsset>
+              </bind>
+
+              <!--bind variable="_Ind.InSig.START">
+                  <makeAsset><_Ind/>.InSig.START</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.InSig.STOP">
+                  <makeAsset><_Ind/>.InSig.STOP</makeAsset>
+              </bind-->
+
+              <bind variable="_Ind.in.SS_bit_out">
+                  <makeAsset><_Ind/>.in.SS_bit_out</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.in.SS_bit_out_index">
+                  <makeAsset><_Ind/>.in.SS_bit_out_index</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.in.timerDone">
+                  <makeAsset><_Ind/>.in.timerDone</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.out.SS_signal">
+                  <makeAsset><_Ind/>.out.SS_signal</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.out.Jamming_start">
+                  <makeAsset><_Ind/>.out.Jamming_start</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.in.Jamming_idle">
+                  <makeAsset><_Ind/>.in.Jamming_idle</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.in.Jamming_ready">
+                  <makeAsset><_Ind/>.in.Jamming_ready</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.in.Jamming_done">
+                  <makeAsset><_Ind/>.in.Jamming_done</makeAsset>
+              </bind>
+
+              <bind variable="_Ind.out.outStartTime">
+                  <makeAsset><_Ind/>.out.outStartTime</makeAsset>
+              </bind>
+
+              <assert>
+                <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                    <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                    <concerto:latency datatype="xsd:integer">3</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">4</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">5.0</concerto:power>   
+                    <!--obr:hasFormalParameters variable="_Ind.params">
+                        <rdf:type resource="obr:MethodParameterArray" />
+                        <rdf:type resource="owl:NamedIndividual" />
+                        <obr:isSequenceOf variable="_Ind.params.0">
+                            <rdf:type resource="obr:MethodParameterArrayElement" />
+                            <rdf:type resource="owl:NamedIndividual" />
+                            <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                            <obr:hasParameter variable="_Ind.params.0.param">
+                                <rdf:type resource="obr:StringParameter" />
+                                <rdf:type resource="owl:NamedIndividual" />
+                                <obr:hasName datatype="xsd:string">tag</obr:hasName>
+                            </obr:hasParameter>
+                        </obr:isSequenceOf>
+                    </obr:hasFormalParameters-->
+
+                  <obr:hasExtClock variable="_Ind.Clk.clk">
+                        <rdf:type resource="obr:ExternalClock"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                  </obr:hasExtClock>
+
+                  <!--obr:hasIncomingSignal variable="_Ind.InSig.START">
+                        <rdf:type resource="obr:IncomingSignal"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">START</obr:hasName>
+                  </obr:hasIncomingSignal>
+
+                  <obr:hasIncomingSignal variable="_Ind.InSig.STOP">
+                        <rdf:type resource="obr:IncomingSignal"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">STOP</obr:hasName>
+                  </obr:hasIncomingSigna-->
+
+                  <obr:hasInputPort variable="_Ind.in.SS_bit_out">
+                        <rdf:type resource="concerto:BooleanArrayInputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasInputPort variable="_Ind.in.SS_bit_out_index">
+                        <rdf:type resource="obr:IntegerInputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <concerto:hasSize datatype="xsd:integer">10</concerto:hasSize>
+                        <obr:hasName datatype="xsd:string">SS_bit_out_index</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasInputPort variable="_Ind.in.timerDone">
+                        <rdf:type resource="obr:BooleanInputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">timerDone</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasOutputPort variable="_Ind.out.SS_signal">
+                        <rdf:type resource="obr:BooleanOutputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                  </obr:hasOutputPort>
+
+                  <obr:hasOutputPort variable="_Ind.out.Jamming_start">
+                        <rdf:type resource="obr:BooleanOutputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                  </obr:hasOutputPort>
+
+                  <obr:hasInputPort variable="_Ind.in.Jamming_idle">
+                        <rdf:type resource="obr:BooleanInputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasInputPort variable="_Ind.in.Jamming_ready">
+                        <rdf:type resource="obr:BooleanInputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasInputPort variable="_Ind.in.Jamming_done">
+                        <rdf:type resource="obr:BooleanInputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasOutputPort variable="_Ind.out.outStartTime">
+                        <rdf:type resource="obr:BooleanOutputPort"/>
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <obr:hasName datatype="xsd:string">outStartTime</obr:hasName>
+                  </obr:hasOutputPort>
+              </Individual>
+          </assert>
+      </head>
+</rule>
+
+
+</BaseVISor>

@@ -1,0 +1,809 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <include lang="BaseVISor" relativePath="Comp_Mode1SM_Connection.bvr" />
+
+<rule name="Mode1SM.SM Rule">
+    <body>
+        <triple>
+            <subject variable="_Ind"/>
+            <predicate resource="rdf:type"/>
+            <object resource="concerto:Mode1SM"/>
+        </triple>
+    </body>
+
+    <head>
+        <bind variable="_Ind.FSM">
+            <makeAsset><_Ind/>.FSM</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                <obr:hasFSMDefinition variable="_Ind.FSM">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="concerto:Mode1FSM"/>
+                </obr:hasFSMDefinition>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+
+<rule name="Mode1SM Definition">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1FSM"/>
+
+    </body>
+
+    <head>
+        <!--bind variable="_Ind.in.SS_bit_out_index_data_value">
+            <param datatype="xsd:integer">42</param>
+        </bind-->
+
+        <bind variable="_Ind.in.SS_bit_out">
+            <makeAsset><_Ind/>.in.SS_bit_out</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.SS_bit_out_index">
+            <makeAsset><_Ind/>.in.SS_bit_out_index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.SS_bit_out_index_value">
+            <makeAsset><_Ind/>.in.SS_bit_out_index_value</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.timerDone">
+            <makeAsset><_Ind/>.in.timerDone</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.out.SS_signal">
+            <makeAsset><_Ind/>.out.SS_signal</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.out.Jamming_start">
+            <makeAsset><_Ind/>.out.Jamming_start</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.Jamming_idle">
+            <makeAsset><_Ind/>.in.Jamming_idle</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.Jamming_ready">
+            <makeAsset><_Ind/>.in.Jamming_ready</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.Jamming_done">
+            <makeAsset><_Ind/>.in.Jamming_done</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.out.outStartTime">
+            <makeAsset><_Ind/>.out.outStartTime</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Clock.clk">
+            <makeAsset><_Ind/>.Clock.clk</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Event.CLK">
+            <makeAsset><_Ind/>.Event.CLOCK</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Event.START">
+            <makeAsset><_Ind/>.Event.START</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.IDLE">
+            <makeAsset><_Ind/>.IDLE</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.IDLE.Transition.0">
+            <makeAsset><_Ind/>.IDLE.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.IDLE.Transition.0.Actions">
+            <makeAsset><_Ind/>.IDLE.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.IDLE.Transition.0.Actions.0">
+            <makeAsset><_Ind/>.IDLE.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.IDLE.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind/>.IDLE.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.ENABLING_SS">
+            <makeAsset><_Ind/>.ENABLING_SS</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.ENABLING_SS.OnEnter">
+            <makeAsset><_Ind/>.ENABLING_SS.OnEnter</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.ENABLING_SS.OnEnter.0">
+            <makeAsset><_Ind/>.ENABLING_SS.OnEnter.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.ENABLING_SS.OnEnter.0.Action">
+            <makeAsset><_Ind/>.ENABLING_SS.OnEnter.0.Action</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.ENABLING_SS.Transition.0">
+            <makeAsset><_Ind/>.ENABLING_SS.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.ENABLING_SS.Transition.0.Actions">
+            <makeAsset><_Ind/>.ENABLING_SS.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.ENABLING_SS.Transition.0.Actions.0">
+            <makeAsset><_Ind/>.ENABLING_SS.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.ENABLING_SS.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind/>.ENABLING_SS.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS">
+            <makeAsset><_Ind/>.MONITORING_SS</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.MONITORING_SS.OnEnter">
+            <makeAsset><_Ind/>.MONITORING_SS.OnEnter</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.OnEnter.0">
+            <makeAsset><_Ind/>.MONITORING_SS.OnEnter.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.OnEnter.0.Action">
+            <makeAsset><_Ind/>.MONITORING_SS.OnEnter.0.Action</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.MONITORING_SS.Transition.0">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.0.Guard">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.0.Guard.L">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.0.Guard.L</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.MONITORING_SS.Transition.0.Guard.L.Index">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.0.Guard.L.Index</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.MONITORING_SS.Transition.0.Guard.R">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.1">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.1.Guard">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.1.Guard.L">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.1.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.1.Guard.L.Index">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.1.Guard.L.Index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.1.Guard.R">
+            <makeAsset><_Ind/>.MONITORING_SS.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START">
+            <makeAsset><_Ind/>.JAMMING_START</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.0">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.0.Actions">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.0.Actions.0">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.0.Guard">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.0.Guard.R">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Guard">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Guard.R">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Actions">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Actions.0">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Actions.0.Action">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Actions.1">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Actions.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_START.Transition.1.Actions.1.Action">
+            <makeAsset><_Ind/>.JAMMING_START.Transition.1.Actions.1.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Actions">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Actions.0">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+        
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.L">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.L.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Guard.L.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.R.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.0.Guard.R.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Actions">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Actions.0">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Actions.0.Action">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Actions.0.Action</makeAsset>
+        </bind>
+        
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.L">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.L.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Guard.L.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.R.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.1.Guard.R.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Guard">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Guard.R">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.0">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.0.Action">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.1">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Actions.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.1.Action">
+            <makeAsset><_Ind/>.JAMMING_CONTINUE.Transition.2.Actions.1.Action</makeAsset>
+        </bind>
+
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                <obr:fsm.hasInitialState variable="_Ind.IDLE"/>
+                <obr:fsm.hasInputPort variable="_Ind.in.SS_bit_out">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.in.SS_bit_out_index">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasValue variable="_Ind.in.SS_bit_out_index_value">
+                        <rdf:type resource="obr:IntegerValue"/>
+                        <rdf:type resource="owl:NamedIndividual"/> 
+                        <!--obr:val variable="_Ind.in.SS_bit_out_index_data_value"/-->                    
+                    </obr:hasValue>
+                    <obr:hasName datatype="xsd:string">SS_bit_out_index</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.in.timerDone">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">timerDone</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasOutputPort variable="_Ind.out.SS_signal">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasOutputPort variable="_Ind.out.Jamming_start">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.in.Jamming_idle">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.in.Jamming_ready">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.in.Jamming_done">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                </obr:fsm.hasInputPort>
+      
+                <obr:fsm.hasOutputPort variable="_Ind.out.outStartTime">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">outStartTime</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasClock variable="_Ind.Clock.clk">
+                    <rdf:type resource="obr:fsm.Clock"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:fsm.hasClock>
+
+                <obr:fsm.hasEvent variable="_Ind.Event.CLK">
+                    <rdf:type resource="obr:fsm.ClockEvent"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">CLK</obr:hasName>
+                    <obr:fsm.hasClock variable="_Ind.Clock.clk"/>
+                </obr:fsm.hasEvent>
+
+                <obr:fsm.hasState variable="_Ind.IDLE">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">IDLE</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.IDLE.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.ENABLING_SS"/>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.IDLE.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.IDLE.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.IDLE.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.SS_signal"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.ENABLING_SS">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">ENABLING_SS</obr:hasName> 
+
+                    <!--obr:fsm.hasOnEnterActions variable="_Ind.ENABLING_SS.OnEnter">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.ActionSequence"/>
+                        <obr:isSequenceOf variable="_Ind.ENABLING_SS.OnEnter.0">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                            <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                            <obr:fsm.hasAction variable="_Ind.ENABLING_SS.OnEnter.0.Action">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.Action.SetOutputToIntegerValue"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">1</obr:fsm.hasValue>
+                                <obr:fsm.setPort variable="_Ind.out.SS_signal"/>
+                            </obr:fsm.hasAction>
+                        </obr:isSequenceOf>
+                    </obr:fsm.hasOnEnterActions-->
+
+                    <obr:fsm.hasTransition variable="_Ind.ENABLING_SS.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.MONITORING_SS"/>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.ENABLING_SS.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.ENABLING_SS.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.ENABLING_SS.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.MONITORING_SS">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">MONITORING_SS</obr:hasName>
+                    <!--obr:fsm.hasOnEnterActions variable="_Ind.MONITORING_SS.OnEnter">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.ActionSequence"/>
+                        <obr:isSequenceOf variable="_Ind.MONITORING_SS.OnEnter.0">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                            <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                            <obr:fsm.hasAction variable="_Ind.MONITORING_SS.OnEnter.0.Action">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.Action.SetOutputToIntegerValue"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">0</obr:fsm.hasValue>
+                                <obr:fsm.setPort variable="_Ind.out.Jamming_start"/>
+                            </obr:fsm.hasAction>
+                        </obr:isSequenceOf>
+                    </obr:fsm.hasOnEnterActions-->
+
+                    <obr:fsm.hasTransition variable="_Ind.MONITORING_SS.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.MONITORING_SS"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.MONITORING_SS.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.NEQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.MONITORING_SS.Transition.0.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="concerto:fsm.ArrayElementExpr"/>
+                                <concerto:fsm.hasVariableExpr variable="_Ind.in.SS_bit_out"/>
+                                <concerto:fsm.hasIndexExpr variable="_Ind.in.SS_bit_out_index"/>
+                            </obr:fsm.hasLeftExpr>
+                            <obr:fsm.hasRightExpr variable="_Ind.MONITORING_SS.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.MONITORING_SS.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.JAMMING_START"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.MONITORING_SS.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.MONITORING_SS.Transition.1.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="concerto:fsm.ArrayElementExpr"/>
+                                <concerto:fsm.hasVariableExpr variable="_Ind.in.SS_bit_out"/>
+                                <concerto:fsm.hasIndexExpr variable="_Ind.in.SS_bit_out_index"/>
+                            </obr:fsm.hasLeftExpr>
+                            <obr:fsm.hasRightExpr variable="_Ind.MONITORING_SS.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.JAMMING_START">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">JAMMING_START</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.JAMMING_START.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.JAMMING_START"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.JAMMING_START.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.in.Jamming_ready"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.JAMMING_START.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.JAMMING_START.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.JAMMING_CONTINUE"/>
+                        <obr:fsm.hasGuard variable="_Ind.JAMMING_START.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.in.Jamming_ready"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.JAMMING_START.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.JAMMING_START.Transition.1.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.JAMMING_START.Transition.1.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.JAMMING_START.Transition.1.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.outStartTime"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                            <obr:isSequenceOf variable="_Ind.JAMMING_START.Transition.1.Actions.1">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">1</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.JAMMING_START.Transition.1.Actions.1.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.JAMMING_CONTINUE">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">JAMMING_CONTINUE</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.JAMMING_CONTINUE.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.JAMMING_CONTINUE"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.LogOp.AND"/>
+                            <obr:fsm.hasLeftCondExpr variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.in.timerDone"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.L.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasLeftCondExpr>
+                            <obr:fsm.hasRightCondExpr variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.in.Jamming_ready"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.JAMMING_CONTINUE.Transition.0.Guard.R.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasRightCondExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.JAMMING_CONTINUE.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.JAMMING_CONTINUE.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.JAMMING_CONTINUE.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.JAMMING_CONTINUE.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.JAMMING_CONTINUE"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.LogOp.AND"/>
+                            <obr:fsm.hasLeftCondExpr variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.in.timerDone"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.L.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasLeftCondExpr>
+                            <obr:fsm.hasRightCondExpr variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.in.Jamming_ready"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.JAMMING_CONTINUE.Transition.1.Guard.R.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasRightCondExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.JAMMING_CONTINUE.Transition.1.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.JAMMING_CONTINUE.Transition.1.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.JAMMING_CONTINUE.Transition.1.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.JAMMING_CONTINUE.Transition.2">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.ENABLING_SS"/>
+                        <obr:fsm.hasGuard variable="_Ind.JAMMING_CONTINUE.Transition.2.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.in.timerDone"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.JAMMING_CONTINUE.Transition.2.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.outStartTime"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                            <obr:isSequenceOf variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.1">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">1</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.JAMMING_CONTINUE.Transition.2.Actions.1.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.out.SS_signal"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+</BaseVISor>

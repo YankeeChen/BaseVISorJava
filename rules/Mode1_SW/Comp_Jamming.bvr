@@ -1,0 +1,70 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+<rule name="Jamming rule">
+    <body>
+        <triple>
+            <subject variable="_Ind"/>
+            <predicate resource="rdf:type"/>
+            <object resource="concerto:Jamming"/>
+        </triple>
+    </body>
+    <head>
+        <!--bind variable="_Ind.params">
+                <makeAsset><_Ind/>.params</makeAsset>
+        </bind>
+        <bind variable="_Ind.params.0">
+                <makeAsset><_Ind/>.params.0</makeAsset>
+        </bind>
+        <bind variable="_Ind.params.0.param">
+                <makeAsset><_Ind/>.params.0.param</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.Clk.clk">
+                <makeAsset><_Ind/>.Clk.clk</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.in.Jamming_signal">
+                <makeAsset><_Ind/>.in.Jamming_signal</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.out.Jamming_out">
+                <makeAsset><_Ind/>.out.Jamming_out</makeAsset>
+        </bind>
+
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                <concerto:activationCost datatype="xsd:integer">6</concerto:activationCost>
+                <concerto:power datatype="xsd:float">4.0</concerto:power>   
+                <obr:hasExtClock variable="_Ind.Clk.clk">
+                    <rdf:type resource="obr:ExternalClock"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+
+                <obr:hasInputPort variable="_Ind.in.Jamming_signal">
+                    <rdf:type resource="obr:IntegerInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_signal</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasOutputPort variable="_Ind.out.Jamming_out">
+                    <rdf:type resource="concerto:ComplexArrayOfArrayOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_out</obr:hasName>
+                </obr:hasOutputPort>
+
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+</BaseVISor>

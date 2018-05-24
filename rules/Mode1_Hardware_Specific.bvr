@@ -1,0 +1,2916 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <!-- include the OWL 2 RL Axioms -->
+      <include name="owl2rl"/>
+
+      <include lang="owl2rl" relativePath="../outputfiles/Mode1_Generic_With_Scheduling.rdf"/>
+
+<rule name="Mode1 hardware composite component construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.Conduit7">
+            <makeAsset><_Ind/>.Conduit7</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit8">
+            <makeAsset><_Ind/>.Conduit8</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit9">
+            <makeAsset><_Ind/>.Conduit9</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit10">
+            <makeAsset><_Ind/>.Conduit10</makeAsset>
+        </bind>
+
+        <assert>
+            <Individual variable="_Ind.Conduit3">
+                <rdf:type resource="concerto:HWConduit"/>
+            </Individual>
+
+            <Individual variable="_Ind.Conduit5">
+                <rdf:type resource="concerto:ControlConduit"/>
+            </Individual>
+
+            <Individual variable="_Ind.Conduit6">
+                <rdf:type resource="concerto:HWConduit"/>
+            </Individual>
+
+            <Individual variable="_Ind">
+                <obr:hasSubComponent variable="_Ind.Conduit7">
+                    <rdf:type resource="concerto:HWConduit"/>
+                    <obr:hasName datatype="xsd:string">Jamming_idle_conduit</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit8">
+                    <rdf:type resource="concerto:HWConduit"/>
+                    <obr:hasName datatype="xsd:string">Jamming_ready_conduit</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit9">
+                    <rdf:type resource="concerto:HWConduit"/>
+                    <obr:hasName datatype="xsd:string">Jamming_done_conduit</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit10">
+                    <rdf:type resource="concerto:HWConduit"/>
+                    <obr:hasName datatype="xsd:string">SS_bit_out_index_conduit</obr:hasName>
+                </obr:hasSubComponent>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Mode1 software composite component construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit3">
+                <rdf:type resource="concerto:SWConduit"/>
+            </Individual>
+
+            <Individual variable="_Ind.Conduit5">
+                <rdf:type resource="concerto:SWConduit"/>
+            </Individual>
+
+            <Individual variable="_Ind.Conduit6">
+                <rdf:type resource="concerto:SWConduit"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="SpectrumSensing hardware external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.in.SS_Signal">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.out.SS_bit_out">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.out.SS_bit_out_index">
+            <makeAsset><_Ind/>.out.SS_bit_out_index</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind.in.SS_Signal" rdf:type="obr:BooleanInputPort"/>
+            <Individual variable="_Ind.out.SS_bit_out" rdf:type="concerto:BooleanArrayOutputPort"/>
+            <Individual variable="_Ind.SpectrumSensing">
+                <obr:hasOutputPort variable="_Ind.out.SS_bit_out_index">
+                    <rdf:type resource="obr:IntegerOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:hasSize datatype="xsd:integer">10</concerto:hasSize>
+                    <obr:hasName datatype="xsd:string">SS_bit_out_index</obr:hasName>
+                </obr:hasOutputPort>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="SpectrumSensing software external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.SpectrumSensing.in.SS_Signal">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.SpectrumSensing.out.SS_bit_out">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_Ind.SpectrumSensing.in.SS_Signal" rdf:type="obr:IntegerInputPort"/>
+            <Individual variable="_Ind.SpectrumSensing.out.SS_bit_out" rdf:type="concerto:IntegerArrayOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming hardware external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Jamming.in.Jamming_start">
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <bind variable="_Ind.Jamming.out.Jamming_idle">
+            <makeAsset><_Ind.Jamming/>.out.Jamming_idle</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Jamming.out.Jamming_ready">
+            <makeAsset><_Ind.Jamming/>.out.Jamming_ready</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Jamming.out.Jamming_done">
+            <makeAsset><_Ind.Jamming/>.out.Jamming_done</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind.Jamming">
+                <obr:hasOutputPort variable="_Ind.Jamming.out.Jamming_idle">
+                    <rdf:type resource="obr:BooleanOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                </obr:hasOutputPort>
+
+                <obr:hasOutputPort variable="_Ind.Jamming.out.Jamming_ready">
+                    <rdf:type resource="obr:BooleanOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                </obr:hasOutputPort>
+
+                <obr:hasOutputPort variable="_Ind.Jamming.out.Jamming_done">
+                    <rdf:type resource="obr:BooleanOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                </obr:hasOutputPort>
+            </Individual>
+            <Individual variable="_Ind.Jamming.in.Jamming_start" rdf:type="obr:BooleanInputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming software external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Jamming.in.Jamming_start">
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Jamming.in.Jamming_start" rdf:type="obr:IntegerInputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Mode1SM hardware external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Mode1SM.in.SS_bit_out">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Mode1SM.out.SS_signal">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:hasOutputPort>
+                <obr:hasOutputPort variable="_Ind.Mode1SM.out.Jamming_start">
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <bind variable="_Ind.Mode1SM.in.SS_bit_out_index">
+            <makeAsset><_Ind.Mode1SM/>.in.SS_bit_out_index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.in.Jamming_idle">
+            <makeAsset><_Ind.Mode1SM/>.in.Jamming_idle</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.in.Jamming_ready">
+            <makeAsset><_Ind.Mode1SM/>.in.Jamming_ready</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.in.Jamming_done">
+            <makeAsset><_Ind.Mode1SM/>.in.Jamming_done</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind.Mode1SM">
+                <obr:hasInputPort variable="_Ind.Mode1SM.in.SS_bit_out_index">
+                    <rdf:type resource="obr:IntegerInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:hasSize datatype="xsd:integer">10</concerto:hasSize>
+                    <obr:hasName datatype="xsd:string">SS_bit_out_index</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasInputPort variable="_Ind.Mode1SM.in.Jamming_idle">
+                    <rdf:type resource="obr:BooleanInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasInputPort variable="_Ind.Mode1SM.in.Jamming_ready">
+                    <rdf:type resource="obr:BooleanInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                </obr:hasInputPort>
+
+                <obr:hasInputPort variable="_Ind.Mode1SM.in.Jamming_done">
+                    <rdf:type resource="obr:BooleanInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                </obr:hasInputPort>               
+            </Individual>
+            <Individual variable="_Ind.Mode1SM.in.SS_bit_out" rdf:type="concerto:BooleanArrayInputPort"/>
+            <Individual variable="_Ind.Mode1SM.out.SS_signal" rdf:type="obr:BooleanOutputPort"/>
+            <Individual variable="_Ind.Mode1SM.out.Jamming_start" rdf:type="obr:BooleanOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Mode1SM software external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Mode1SM.in.SS_bit_out">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Mode1SM.out.SS_signal">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:hasOutputPort>
+                <obr:hasOutputPort variable="_Ind.Mode1SM.out.Jamming_start">
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Mode1SM.in.SS_bit_out" rdf:type="concerto:IntegerArrayInputPort"/>
+            <Individual variable="_Ind.Mode1SM.out.SS_signal" rdf:type="obr:IntegerOutputPort"/>
+            <Individual variable="_Ind.Mode1SM.out.Jamming_start" rdf:type="obr:IntegerOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit3 hardware external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit3.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit3.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit3.in.input_port" rdf:type="concerto:BooleanArrayInputPort"/>
+            <Individual variable="_Ind.Conduit3.out.output_port" rdf:type="concerto:BooleanArrayOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit3 software external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit3.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit3.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit3.in.input_port" rdf:type="concerto:IntegerArrayInputPort"/>
+            <Individual variable="_Ind.Conduit3.out.output_port" rdf:type="concerto:IntegerArrayOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit5 hardware external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit5.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit5.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit5.in.input_port" rdf:type="obr:BooleanInputPort"/>
+            <Individual variable="_Ind.Conduit5.out.output_port" rdf:type="obr:BooleanOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit5 software external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit5.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit5.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit5.in.input_port" rdf:type="obr:IntegerInputPort"/>
+            <Individual variable="_Ind.Conduit5.out.output_port" rdf:type="obr:IntegerOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit6 hardware external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit6.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit6.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit6.in.input_port" rdf:type="obr:BooleanInputPort"/>
+            <Individual variable="_Ind.Conduit6.out.output_port" rdf:type="obr:BooleanOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit6 software external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit6.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit6.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_Ind.Conduit6.in.input_port" rdf:type="obr:IntegerInputPort"/>
+            <Individual variable="_Ind.Conduit6.out.output_port" rdf:type="obr:IntegerOutputPort"/>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit7 external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:HWConduit">
+            <obr:hasName datatype="xsd:string">Jamming_idle_conduit</obr:hasName>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.operation_load">
+            <makeAsset><_Ind/>.operation_load</makeAsset>
+        </bind>
+        <bind variable="_Ind.operation_store">
+            <makeAsset><_Ind/>.operation_store</makeAsset>
+        </bind>
+        <bind variable="_Ind.in.input_port">
+            <makeAsset><_Ind/>.in.input_port</makeAsset>
+        </bind>
+        <bind variable="_Ind.out.output_port">
+            <makeAsset><_Ind/>.out.output_port</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">  
+                <obr:participatesIn variable="_Ind.operation_load">
+                    <rdf:type resource="concerto:Load"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:participatesIn variable="_Ind.operation_store">
+                    <rdf:type resource="concerto:Store"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:hasInputPort variable="_Ind.in.input_port">
+                    <rdf:type resource="obr:BooleanInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.out.output_port">
+                    <rdf:type resource="obr:BooleanOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit8 external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:HWConduit">
+            <obr:hasName datatype="xsd:string">Jamming_ready_conduit</obr:hasName>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.operation_load">
+            <makeAsset><_Ind/>.operation_load</makeAsset>
+        </bind>
+        <bind variable="_Ind.operation_store">
+            <makeAsset><_Ind/>.operation_store</makeAsset>
+        </bind>
+        <bind variable="_Ind.in.input_port">
+            <makeAsset><_Ind/>.in.input_port</makeAsset>
+        </bind>
+        <bind variable="_Ind.out.output_port">
+            <makeAsset><_Ind/>.out.output_port</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">  
+                <obr:participatesIn variable="_Ind.operation_load">
+                    <rdf:type resource="concerto:Load"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:participatesIn variable="_Ind.operation_store">
+                    <rdf:type resource="concerto:Store"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:hasInputPort variable="_Ind.in.input_port">
+                    <rdf:type resource="obr:BooleanInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.out.output_port">
+                    <rdf:type resource="obr:BooleanOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit9 external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:HWConduit">
+            <obr:hasName datatype="xsd:string">Jamming_done_conduit</obr:hasName>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.operation_load">
+            <makeAsset><_Ind/>.operation_load</makeAsset>
+        </bind>
+        <bind variable="_Ind.operation_store">
+            <makeAsset><_Ind/>.operation_store</makeAsset>
+        </bind>
+        <bind variable="_Ind.in.input_port">
+            <makeAsset><_Ind/>.in.input_port</makeAsset>
+        </bind>
+        <bind variable="_Ind.out.output_port">
+            <makeAsset><_Ind/>.out.output_port</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">  
+                <obr:participatesIn variable="_Ind.operation_load">
+                    <rdf:type resource="concerto:Load"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:participatesIn variable="_Ind.operation_store">
+                    <rdf:type resource="concerto:Store"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:hasInputPort variable="_Ind.in.input_port">
+                    <rdf:type resource="obr:BooleanInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.out.output_port">
+                    <rdf:type resource="obr:BooleanOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit10 external interface construction rule">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:HWConduit">
+            <obr:hasName datatype="xsd:string">SS_bit_out_index_conduit</obr:hasName>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.operation_load">
+            <makeAsset><_Ind/>.operation_load</makeAsset>
+        </bind>
+        <bind variable="_Ind.operation_store">
+            <makeAsset><_Ind/>.operation_store</makeAsset>
+        </bind>
+        <bind variable="_Ind.in.input_port">
+            <makeAsset><_Ind/>.in.input_port</makeAsset>
+        </bind>
+        <bind variable="_Ind.out.output_port">
+            <makeAsset><_Ind/>.out.output_port</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">  
+                <obr:participatesIn variable="_Ind.operation_load">
+                    <rdf:type resource="concerto:Load"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:participatesIn variable="_Ind.operation_store">
+                    <rdf:type resource="concerto:Store"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                    <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                    <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                </obr:participatesIn>
+                <obr:hasInputPort variable="_Ind.in.input_port">
+                    <rdf:type resource="obr:IntegerInputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:hasSize datatype="xsd:integer">10</concerto:hasSize>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.out.output_port">
+                    <rdf:type resource="obr:IntegerOutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <concerto:hasSize datatype="xsd:integer">10</concerto:hasSize>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming and Conduit7 Jamming_idle port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_idle_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit7 and Mode1SM Jamming_idle port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_idle_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming and Conduit8 Jamming_ready port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_ready_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit8 and Mode1SM Jamming_ready port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_ready_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming and Conduit9 Jamming_done port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_done_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit9 and Mode1SM Jamming_done port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_done_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="SpectrumSensing and Conduit10 SS_bit_out_index port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">SS_bit_out_index</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_bit_out_index_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Conduit10 and Mode1SM SS_bit_out_index port connection rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_bit_out_index_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">SS_bit_out_index</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Mode1SM hardware definition">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasFSMDefinition variable="_Ind.Mode1SM.FSM">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="concerto:Mode1FSM"/>
+                </obr:hasFSMDefinition>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit5.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit5.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:FPGAComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.Mode1SM.FSM.in.SS_bit_out">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.SS_bit_out</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.in.SS_bit_out_index">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.SS_bit_out_index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.in.SS_bit_out_index_value">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.SS_bit_out_index_value</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.Mode1SM.FSM.in.timerDone">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.timerDone</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.Mode1SM.FSM.Property.timerDone">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Property.timerDone</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.out.SS_signal">
+            <makeAsset><_Ind.Mode1SM.FSM/>.out.SS_signal</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.out.Jamming_start">
+            <makeAsset><_Ind.Mode1SM.FSM/>.out.Jamming_start</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.in.Jamming_idle">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.Jamming_idle</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.in.Jamming_ready">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.Jamming_ready</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.in.Jamming_done">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.Jamming_done</makeAsset>
+        </bind>
+
+        <!--bind variable="_Ind.Mode1SM.FSM.out.outStartTime">
+            <makeAsset><_Ind.Mode1SM.FSM/>.out.outStartTime</makeAsset>
+        </bind-->
+
+        <bind variable="_Ind.Mode1SM.FSM.Property.outStartTime">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Property.outStartTime</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Clock.clk">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Clock.clk</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Event.CLK">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Event.CLOCK</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Event.START">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Event.START</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE.Transition.0.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE.Transition.0.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.L">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.L">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.MONITORING_SS.Transition.1.Guard.L.Index">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard.L.Index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Actions.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.1.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_START.Transition.1.Actions.1.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+        
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.L">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.L.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Guard.L.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.R.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.0.Guard.R.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Actions.0.Action</makeAsset>
+        </bind>
+        
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.L">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.L.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Guard.L.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.R.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.1.Guard.R.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Actions.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.1.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.JAMMING_CONTINUE.Transition.2.Actions.1.Action</makeAsset>
+        </bind>
+
+        <assert>
+            <Individual variable="_Ind.Mode1SM.FSM" rdf:type="owl:NamedIndividual">
+                <obr:fsm.hasInitialState variable="_Ind.Mode1SM.FSM.IDLE"/>
+                <obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.SS_bit_out">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.SS_bit_out_index">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasValue variable="_Ind.Mode1SM.FSM.in.SS_bit_out_index_value">
+                        <rdf:type resource="obr:BooleanValue"/>
+                        <rdf:type resource="owl:NamedIndividual"/>                   
+                    </obr:hasValue>
+                    <obr:hasName datatype="xsd:string">SS_bit_out_Index</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort>
+
+                <!--obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.timerDone">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">timerDone</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort-->
+
+                <obr:fsm.hasProperty variable="_Ind.Mode1SM.FSM.Property.timerDone">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.Property"/>
+                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                    <obr:hasName datatype="xsd:string">timerDone</obr:hasName>
+                    <obr:hasType datatype="xsd:string">boolean</obr:hasType>
+                    <obr:fsm.isReadOnly datatype="xsd:boolean">false</obr:fsm.isReadOnly>
+                </obr:fsm.hasProperty>
+
+                <obr:fsm.hasOutputPort variable="_Ind.Mode1SM.FSM.out.SS_signal">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasOutputPort variable="_Ind.Mode1SM.FSM.out.Jamming_start">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.Jamming_idle">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_idle</obr:hasName>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.Jamming_ready">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_ready</obr:hasName>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.Jamming_done">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_done</obr:hasName>
+                </obr:fsm.hasInputPort>
+      
+                <!--obr:fsm.hasOutputPort variable="_Ind.Mode1SM.FSM.out.outStartTime">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">outStartTime</obr:hasName>
+                </obr:fsm.hasOutputPort-->
+
+                <obr:fsm.hasProperty variable="_Ind.Mode1SM.FSM.Property.outStartTime">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.Property"/>
+                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                    <obr:hasName datatype="xsd:string">outStartTime</obr:hasName>
+                    <obr:hasType datatype="xsd:string">boolean</obr:hasType>
+                    <obr:fsm.isReadOnly datatype="xsd:boolean">false</obr:fsm.isReadOnly>
+                </obr:fsm.hasProperty>
+
+                <obr:fsm.hasClock variable="_Ind.Mode1SM.FSM.Clock.clk">
+                    <rdf:type resource="obr:fsm.Clock"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:fsm.hasClock>
+
+                <obr:fsm.hasEvent variable="_Ind.Mode1SM.FSM.Event.CLK">
+                    <rdf:type resource="obr:fsm.ClockEvent"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">CLK</obr:hasName>
+                    <obr:fsm.hasClock variable="_Ind.Mode1SM.FSM.Clock.clk"/>
+                </obr:fsm.hasEvent>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.IDLE">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">IDLE</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.IDLE.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.ENABLING_SS"/>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.IDLE.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.IDLE.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.IDLE.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.SS_signal"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.ENABLING_SS">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">ENABLING_SS</obr:hasName> 
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.MONITORING_SS"/>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.MONITORING_SS">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">MONITORING_SS</obr:hasName>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.MONITORING_SS"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.NEQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="concerto:fsm.ArrayElementExpr"/>
+                                <concerto:fsm.hasVariableExpr variable="_Ind.Mode1SM.FSM.in.SS_bit_out"/>
+                                <concerto:fsm.hasIndexExpr variable="_Ind.Mode1SM.FSM.in.SS_bit_out_index"/>
+                            </obr:fsm.hasLeftExpr>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.JAMMING_START"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="concerto:fsm.ArrayElementExpr"/>
+                                <concerto:fsm.hasVariableExpr variable="_Ind.Mode1SM.FSM.in.SS_bit_out"/>
+                                <concerto:fsm.hasIndexExpr variable="_Ind.Mode1SM.FSM.in.SS_bit_out_index"/>
+                            </obr:fsm.hasLeftExpr>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.JAMMING_START">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">JAMMING_START</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.JAMMING_START"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.in.Jamming_ready"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE"/>
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.in.Jamming_ready"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setProperty variable="_Ind.Mode1SM.FSM.Property.outStartTime"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.1">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">1</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.JAMMING_START.Transition.1.Actions.1.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">JAMMING_CONTINUE</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.LogOp.AND"/>
+                            <obr:fsm.hasLeftCondExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.Property.timerDone"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.L.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasLeftCondExpr>
+                            <obr:fsm.hasRightCondExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.in.Jamming_ready"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Guard.R.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasRightCondExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.LogOp.AND"/>
+                            <obr:fsm.hasLeftCondExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.Property.timerDone"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.L.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasLeftCondExpr>
+                            <obr:fsm.hasRightCondExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                                <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.in.Jamming_ready"/>
+                                <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Guard.R.R">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                </obr:fsm.hasRightExpr>
+                            </obr:fsm.hasRightCondExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.1.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.Jamming_start"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.ENABLING_SS"/>
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.Property.timerDone"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">false</obr:fsm.hasValue>
+                                    <obr:fsm.setProperty variable="_Ind.Mode1SM.FSM.Property.outStartTime"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.1">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">1</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.JAMMING_CONTINUE.Transition.2.Actions.1.Action">
+                                    <rdf:type resource="obr:fsm.Action.SetOutputToBooleanValue"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:boolean">true</obr:fsm.hasValue>
+                                    <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.SS_signal"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Mode1SM software definition">
+    <body>
+        <Individual variable="_Ind" rdf:type="concerto:Mode1">
+            <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                <rdf:type resource="concerto:SpectrumSensing"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Jamming">
+                <rdf:type resource="concerto:Jamming"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Mode1SM">
+                <rdf:type resource="concerto:Mode1SM"/>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasFSMDefinition variable="_Ind.Mode1SM.FSM">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="concerto:Mode1FSM"/>
+                </obr:hasFSMDefinition>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit1">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit2">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit3">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit4">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit5">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+                <obr:hasInputPort variable="_Ind.Conduit5.in.input_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+                <obr:hasOutputPort variable="_Ind.Conduit5.out.output_port">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent variable="_Ind.Conduit6">
+                <obr:hasName datatype="xsd:string">Jamming_start_conduit</obr:hasName>
+                <concerto:isRealizedOn anonVar="true">
+                    <rdf:type resource="concerto:CPUComponent"/>
+                </concerto:isRealizedOn>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <bind variable="_Ind.Mode1SM.FSM.in.SS_bit_out">
+            <makeAsset><_Ind.Mode1SM.FSM/>.in.SS_bit_out</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.out.SS_signal">
+            <makeAsset><_Ind.Mode1SM.FSM/>.out.SS_signal</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.out.Jamming_start">
+            <makeAsset><_Ind.Mode1SM.FSM/>.out.Jamming_start</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Clock.clk">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Clock.clk</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Event.CLK">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Event.CLOCK</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Event.START">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Event.START</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.Property.timer">
+            <makeAsset><_Ind.Mode1SM.FSM/>.Property.timer</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.IDLE.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.IDLE.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.OnEnter">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.OnEnter</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.OnEnter.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.OnEnter.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.OnEnter.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.OnEnter.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_SS.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.OnEnter">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.OnEnter</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.OnEnter.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.OnEnter.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.OnEnter.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.OnEnter.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.L">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.L.Index">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard.L.Index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.L">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard.L</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.L.Index">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard.L.Index</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.MONITORING_SS.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.OnEnter</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.OnEnter.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.OnEnter.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.OnEnter.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.1.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.OnEnter.1.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Actions">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.0.Actions</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Actions.0">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.0.Actions.0</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Actions.0.Action">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.0.Actions.0.Action</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.0.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.0.Guard.R</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.1">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.1.Guard">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.1.Guard</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.1.Guard.R">
+            <makeAsset><_Ind.Mode1SM.FSM/>.ENABLING_JAMMING.Transition.1.Guard.R</makeAsset>
+        </bind>
+
+        <assert>
+            <Individual variable="_Ind.Mode1SM.FSM" rdf:type="owl:NamedIndividual">
+                <obr:fsm.hasInitialState variable="_Ind.Mode1SM.FSM.IDLE"/>
+
+                <obr:fsm.hasInputPort variable="_Ind.Mode1SM.FSM.in.SS_bit_out">
+                    <rdf:type resource="obr:fsm.InputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                    <obr:fsm.isAsynchronous datatype="xsd:boolean">false</obr:fsm.isAsynchronous>
+                </obr:fsm.hasInputPort>
+
+                <obr:fsm.hasOutputPort variable="_Ind.Mode1SM.FSM.out.SS_signal">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasOutputPort variable="_Ind.Mode1SM.FSM.out.Jamming_start">
+                    <rdf:type resource="obr:fsm.OutputPort"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">Jamming_start</obr:hasName>
+                </obr:fsm.hasOutputPort>
+
+                <obr:fsm.hasClock variable="_Ind.Mode1SM.FSM.Clock.clk">
+                    <rdf:type resource="obr:fsm.Clock"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:fsm.hasClock>
+
+                <obr:fsm.hasEvent variable="_Ind.Mode1SM.FSM.Event.CLK">
+                    <rdf:type resource="obr:fsm.ClockEvent"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">CLK</obr:hasName>
+                    <obr:fsm.hasClock variable="_Ind.Mode1SM.FSM.Clock.clk"/>
+                </obr:fsm.hasEvent>
+
+                <obr:fsm.hasEvent variable="_Ind.Mode1SM.FSM.Event.START">
+                    <rdf:type resource="obr:fsm.SignalEvent"/>
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <obr:hasName datatype="xsd:string">START</obr:hasName>
+                </obr:fsm.hasEvent>
+
+                <obr:fsm.hasProperty variable="_Ind.Mode1SM.FSM.Property.timer">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.Property"/>
+                    <obr:fsm.hasValue datatype="xsd:integer">0</obr:fsm.hasValue>
+                    <obr:hasName datatype="xsd:string">jamming_timer</obr:hasName>
+                    <obr:hasType datatype="xsd:string">integer</obr:hasType>
+                    <obr:fsm.isReadOnly datatype="xsd:boolean">false</obr:fsm.isReadOnly>
+                </obr:fsm.hasProperty>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.IDLE">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">IDLE</obr:hasName>
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.IDLE.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.START"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.ENABLING_SS"/>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.ENABLING_SS">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">ENABLING_SS</obr:hasName>
+
+                    <obr:fsm.hasOnEnterActions variable="_Ind.Mode1SM.FSM.ENABLING_SS.OnEnter">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.ActionSequence"/>
+                        <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.ENABLING_SS.OnEnter.0">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                            <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                            <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.ENABLING_SS.OnEnter.0.Action">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.Action.SetOutputToIntegerValue"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">1</obr:fsm.hasValue>
+                                <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.SS_signal"/>
+                            </obr:fsm.hasAction>
+                        </obr:isSequenceOf>
+                    </obr:fsm.hasOnEnterActions>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.ENABLING_SS.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.MONITORING_SS"/>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.MONITORING_SS">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">MONITORING_SS</obr:hasName>
+
+                    <obr:fsm.hasOnEnterActions variable="_Ind.Mode1SM.FSM.MONITORING_SS.OnEnter">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.ActionSequence"/>
+                        <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.MONITORING_SS.OnEnter.0">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                            <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                            <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.MONITORING_SS.OnEnter.0.Action">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.Action.SetOutputToIntegerValue"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">0</obr:fsm.hasValue>
+                                <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.Jamming_start"/>
+                            </obr:fsm.hasAction>
+                        </obr:isSequenceOf>
+                    </obr:fsm.hasOnEnterActions>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.MONITORING_SS"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.NEQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="concerto:fsm.ArrayElementExpr"/>
+                                <concerto:fsm.hasVariableExpr variable="_Ind.Mode1SM.FSM.in.SS_bit_out"/>
+                                <concerto:fsm.hasIndexExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.L.Index">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:integer">42</obr:fsm.hasValue>
+                                </concerto:fsm.hasIndexExpr>
+                            </obr:fsm.hasLeftExpr>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">1</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.L">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="concerto:fsm.ArrayElementExpr"/>
+                                <concerto:fsm.hasVariableExpr variable="_Ind.Mode1SM.FSM.in.SS_bit_out"/>
+                                <concerto:fsm.hasIndexExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.L.Index">
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <rdf:type resource="obr:fsm.ValueExpr"/>
+                                    <obr:fsm.hasValue datatype="xsd:integer">42</obr:fsm.hasValue>
+                                </concerto:fsm.hasIndexExpr>
+                            </obr:fsm.hasLeftExpr>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.MONITORING_SS.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">1</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+
+                <obr:fsm.hasState variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING">
+                    <rdf:type resource="owl:NamedIndividual"/>
+                    <rdf:type resource="obr:fsm.State"/>
+                    <obr:hasName datatype="xsd:string">ENABLING_JAMMING</obr:hasName>
+
+                    <obr:fsm.hasOnEnterActions variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.ActionSequence"/>
+                        <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.0">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                            <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                            <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.0.Action">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.Action.SetOutputToIntegerValue"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">1</obr:fsm.hasValue>
+                                <obr:fsm.setPort variable="_Ind.Mode1SM.FSM.out.Jamming_start"/>
+                            </obr:fsm.hasAction>
+                        </obr:isSequenceOf>
+                        <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.1">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                            <obr:hasIndex datatype="xsd:integer">1</obr:hasIndex>
+                            <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.OnEnter.1.Action">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.Action.SetPropertyToIntegerValue"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">0</obr:fsm.hasValue>
+                                <obr:fsm.setProperty variable="_Ind.Mode1SM.FSM.Property.timer"/>
+                            </obr:fsm.hasAction>
+                        </obr:isSequenceOf>
+                    </obr:fsm.hasOnEnterActions>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.LT"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.Property.timer"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">5</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+
+                        <obr:fsm.hasTransitionActions variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Actions">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.ActionSequence"/>
+                            <obr:isSequenceOf variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Actions.0">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ActionArrayElement"/>
+                                <obr:hasIndex datatype="xsd:integer">0</obr:hasIndex>
+                                <obr:fsm.hasAction variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.0.Actions.0.Action">
+                                    <rdf:type resource="obr:fsm.Action.IncrementProperty"/>
+                                    <rdf:type resource="owl:NamedIndividual"/>
+                                    <obr:fsm.hasValue datatype="xsd:integer">1</obr:fsm.hasValue>
+                                    <obr:fsm.setProperty variable="_Ind.Mode1SM.FSM.Property.timer"/>
+                                </obr:fsm.hasAction>
+                            </obr:isSequenceOf>
+                        </obr:fsm.hasTransitionActions>
+                    </obr:fsm.hasTransition>
+
+                    <obr:fsm.hasTransition variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.1">
+                        <rdf:type resource="owl:NamedIndividual"/>
+                        <rdf:type resource="obr:fsm.Transition"/>
+                        <obr:fsm.triggeredBy variable="_Ind.Mode1SM.FSM.Event.CLK"/>
+                        <obr:fsm.hasTarget variable="_Ind.Mode1SM.FSM.MONITORING_SS"/>
+
+                        <obr:fsm.hasGuard variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.1.Guard">
+                            <rdf:type resource="owl:NamedIndividual"/>
+                            <rdf:type resource="obr:fsm.EvalCmp.EQ"/>
+                            <obr:fsm.hasLeftExpr variable="_Ind.Mode1SM.FSM.Property.timer"/>
+                            <obr:fsm.hasRightExpr variable="_Ind.Mode1SM.FSM.ENABLING_JAMMING.Transition.1.Guard.R">
+                                <rdf:type resource="owl:NamedIndividual"/>
+                                <rdf:type resource="obr:fsm.ValueExpr"/>
+                                <obr:fsm.hasValue datatype="xsd:integer">5</obr:fsm.hasValue>
+                            </obr:fsm.hasRightExpr>
+                        </obr:fsm.hasGuard>
+                    </obr:fsm.hasTransition>
+                </obr:fsm.hasState>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+</BaseVISor>

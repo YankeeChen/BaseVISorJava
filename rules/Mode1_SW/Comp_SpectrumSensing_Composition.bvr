@@ -1,0 +1,53 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <include lang="BaseVISor" relativePath="Comp_FFT.bvr" />
+      <include lang="BaseVISor" relativePath="Comp_Magnitude.bvr" />
+      <include lang="BaseVISor" relativePath="Comp_Threshold.bvr" />
+      <include lang="BaseVISor" relativePath="Comp_SpectrumSensing_Connection.bvr" />
+
+<rule name="SpectrumSensing.Composition rule">
+    <body>
+        <triple>
+            <subject variable="_Ind"/>
+            <predicate resource="rdf:type"/>
+            <object resource="concerto:SpectrumSensing"/>
+        </triple>
+    </body>
+
+    <head>
+        <bind variable="_Ind.FFT">
+            <makeAsset><_Ind/>.FFT</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Magnitude">
+            <makeAsset><_Ind/>.Magnitude</makeAsset>
+        </bind>
+  
+        <bind variable="_Ind.Threshold">
+            <makeAsset><_Ind/>.Threshold</makeAsset>
+        </bind>
+
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                <obr:hasSubComponent variable="_Ind.FFT">
+                    <rdf:type resource="concerto:FFT"/>
+                </obr:hasSubComponent>
+                <obr:hasSubComponent variable="_Ind.Magnitude">
+                    <rdf:type resource="concerto:Magnitude"/>
+                </obr:hasSubComponent>
+                <obr:hasSubComponent variable="_Ind.Threshold">
+                    <rdf:type resource="concerto:Threshold"/>
+                </obr:hasSubComponent>
+            </Individual>
+        </assert>
+    </head>
+ </rule>
+
+</BaseVISor>

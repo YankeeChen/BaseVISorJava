@@ -1,0 +1,10 @@
+Capability,Node,Task,Start CStep,End CStep
+CPU3,1,mode1.Conduit1,0,1
+FPGA2,2,mode1.Conduit2,1,2
+FPGA1,3,mode1.SpectrumSensing,2,3
+FPGA2,4,mode1.Conduit3,3,4
+CPU1,5,mode1.Mode1SM,4,5
+FPGA2,6,mode1.Conduit5,5,6
+CPU2,7,mode1.Conduit6,6,7
+FPGA3,8,mode1.Jamming,7,8
+FPGA2,9,mode1.Conduit4,8,9

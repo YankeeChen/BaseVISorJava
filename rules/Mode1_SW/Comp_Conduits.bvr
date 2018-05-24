@@ -1,0 +1,332 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <rule name="Conduit 1 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:DataConduit">
+                  <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_load">
+                  <makeAsset><_Ind/>.load_operation</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual"> 
+                      <obr:participatesIn variable="_Ind.operation_load">
+                          <rdf:type resource="concerto:Load"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">1</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">1</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">5.0</concerto:power>  
+                      </obr:participatesIn>
+
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="concerto:ComplexArrayOfArrayInputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="concerto:ComplexArrayOfArrayOutputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+
+      <rule name="Conduit 2 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:DataConduit">
+                  <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_load">
+                  <makeAsset><_Ind/>.load_operation</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual"> 
+                      <obr:participatesIn variable="_Ind.operation_load">
+                          <rdf:type resource="concerto:Load"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">1</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">1</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">5.0</concerto:power>  
+                      </obr:participatesIn>
+
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="concerto:IntegerArrayInputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="concerto:IntegerArrayOutputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+
+      <rule name="Conduit 3 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:DataConduit">
+                  <obr:hasName datatype="xsd:string">SS_external_conduit3</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_load">
+                  <makeAsset><_Ind/>.load_operation</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                      <obr:participatesIn variable="_Ind.operation_load">
+                          <rdf:type resource="concerto:Load"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">1</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">1</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">5.0</concerto:power>  
+                      </obr:participatesIn>
+
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="concerto:ComplexArrayInputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="concerto:ComplexArrayOutputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+
+      <rule name="Conduit 4 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:SWConduit">
+                  <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_load">
+                  <makeAsset><_Ind/>.operation_load</makeAsset>
+              </bind>
+              <bind variable="_Ind.operation_store">
+                  <makeAsset><_Ind/>.operation_store</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                      <obr:participatesIn variable="_Ind.operation_load">
+                          <rdf:type resource="concerto:Load"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                      </obr:participatesIn>
+                      <obr:participatesIn variable="_Ind.operation_store">
+                          <rdf:type resource="concerto:Store"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                      </obr:participatesIn>
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="concerto:IntegerArrayInputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="concerto:IntegerArrayOutputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+
+      <rule name="Conduit 5 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:SWConduit">
+                  <obr:hasName datatype="xsd:string">Jamming_signal_conduit</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_load">
+                  <makeAsset><_Ind/>.operation_load</makeAsset>
+              </bind>
+              <bind variable="_Ind.operation_store">
+                  <makeAsset><_Ind/>.operation_store</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                      <obr:participatesIn variable="_Ind.operation_load">
+                          <rdf:type resource="concerto:Load"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                      </obr:participatesIn>
+                      <obr:participatesIn variable="_Ind.operation_store">
+                          <rdf:type resource="concerto:Store"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                      </obr:participatesIn>
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <rdf:type rdf:type="obr:IntegerInputPort"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <rdf:type rdf:type="obr:IntegerOutputPort"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+
+      <rule name="Conduit 6 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:DataConduit">
+                  <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_store">
+                  <makeAsset><_Ind/>.operation_store</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual">  
+                      <obr:participatesIn variable="_Ind.operation_store">
+                          <rdf:type resource="concerto:Store"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">1</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">1</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">5.0</concerto:power>
+                      </obr:participatesIn>
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="concerto:ComplexArrayOfArrayInputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="concerto:ComplexArrayOfArrayOutputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+
+      <rule name="Conduit 7 Rule">
+          <body>
+              <Individual variable="_Ind" rdf:type="concerto:SWConduit">
+                  <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+              </Individual>
+          </body>
+
+          <head>
+              <bind variable="_Ind.operation_load">
+                  <makeAsset><_Ind/>.operation_load</makeAsset>
+              </bind>
+              <bind variable="_Ind.operation_store">
+                  <makeAsset><_Ind/>.operation_store</makeAsset>
+              </bind>
+              <bind variable="_Ind.in.input_port">
+                  <makeAsset><_Ind/>.in.input_port</makeAsset>
+              </bind>
+              <bind variable="_Ind.out.output_port">
+                  <makeAsset><_Ind/>.out.output_port</makeAsset>
+              </bind>
+              <assert>
+                  <Individual variable="_Ind" rdf:type="owl:NamedIndividual">  
+                     <obr:participatesIn variable="_Ind.operation_load">
+                          <rdf:type resource="concerto:Load"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                      </obr:participatesIn>
+                      <obr:participatesIn variable="_Ind.operation_store">
+                          <rdf:type resource="concerto:Store"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <concerto:latency datatype="xsd:integer">2</concerto:latency>
+                          <concerto:activationCost datatype="xsd:integer">3</concerto:activationCost>
+                          <concerto:power datatype="xsd:float">4.0</concerto:power>  
+                      </obr:participatesIn>
+                      <obr:hasInputPort variable="_Ind.in.input_port">
+                          <rdf:type resource="obr:IntegerInputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                      </obr:hasInputPort>
+                      <obr:hasOutputPort variable="_Ind.out.output_port">
+                          <rdf:type resource="obr:IntegerOutputPort"/>
+                          <rdf:type resource="owl:NamedIndividual"/>
+                          <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                      </obr:hasOutputPort>
+                  </Individual>
+              </assert>
+          </head>
+      </rule>
+</BaseVISor>

@@ -1,0 +1,74 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <rule name="Magnitude Rule">
+          <body>
+              <triple>
+                  <subject variable="_Ind"/>
+                  <predicate resource="rdf:type"/>
+                  <object resource="concerto:Magnitude"/>
+              </triple>
+          </body>
+
+          <head>
+
+          <bind variable="_Ind.Clk.clk">
+                  <makeAsset><_Ind/>.Clk.clk</makeAsset>
+          </bind>
+          <!--bind variable="_Ind.in.magnitude_in_re">
+                  <makeAsset><_Ind/>.in.magnitude_in_re</makeAsset>
+          </bind>
+          <bind variable="_Ind.in.magnitude_in_im">
+                  <makeAsset><_Ind/>.in.magnitude_in_im</makeAsset>
+          </bind-->
+          <bind variable="_Ind.in.magnitude_in_data">
+                  <makeAsset><_Ind/>.in.magnitude_in_data</makeAsset>
+          </bind>          
+          <bind variable="_Ind.out.magnitude_out_amp">
+                  <makeAsset><_Ind/>.out.magnitude_out_amp</makeAsset>
+          </bind>
+          <assert>
+              <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                  <obr:hasName datatype="xsd:string">Magnitude</obr:hasName>
+
+                  <obr:hasExtClock variable="_Ind.Clk.clk">
+                      <rdf:type resource="obr:ExternalClock"/>
+                      <rdf:type resource="owl:NamedIndividual"/>
+                      <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                  </obr:hasExtClock>
+
+                  <!--obr:hasInputPort variable="_Ind.in.magnitude_in_re">
+                      <rdf:type resource="concerto:FloatArrayInputPort"/>
+                      <rdf:type resource="owl:NamedIndividual"/>
+                      <obr:hasName datatype="xsd:string">magnitude_in_re</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasInputPort variable="_Ind.in.magnitude_in_im">
+                      <rdf:type resource="concerto:FloatArrayInputPort"/>
+                      <rdf:type resource="owl:NamedIndividual"/>
+                      <obr:hasName datatype="xsd:string">magnitude_in_im</obr:hasName>
+                  </obr:hasInputPort-->
+
+                  <obr:hasInputPort variable="_Ind.in.magnitude_in_data">
+                      <rdf:type resource="concerto:FloatArrayInputPort"/>
+                      <rdf:type resource="owl:NamedIndividual"/>
+                      <obr:hasName datatype="xsd:string">magnitude_in_data</obr:hasName>
+                  </obr:hasInputPort>
+
+                  <obr:hasOutputPort variable="_Ind.out.magnitude_out_amp">
+                      <rdf:type resource="concerto:FloatArrayOutputPort"/>
+                      <rdf:type resource="owl:NamedIndividual"/>
+                      <obr:hasName datatype="xsd:string">magnitude_out_amp</obr:hasName>
+                  </obr:hasOutputPort>
+                  
+              </Individual>
+          </assert>
+          </head>
+      </rule>
+</BaseVISor>

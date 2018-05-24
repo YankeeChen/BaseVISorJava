@@ -1,0 +1,154 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+<!-- Clock rule -->
+<rule name="Mode1FSM clock rule">
+   <body>
+       <Individual variable="_Ind">
+           <rdf:type resource="concerto:Mode1SM"/>
+           <obr:hasFSMDefinition anonVar="true" >
+               <obr:fsm.hasClock variable="_subCompClk">
+                   <obr:hasName datatype="xsd:string">clk</obr:hasName>
+               </obr:fsm.hasClock>
+           </obr:hasFSMDefinition>
+           <obr:hasExtClock variable="_compClk">
+               <obr:hasName datatype="xsd:string">clk</obr:hasName>
+           </obr:hasExtClock>
+       </Individual>
+   </body>
+   <head>
+       <assert>
+           <Individual variable="_compClk">
+               <obr:drivesClock variable="_subCompClk"/>
+           </Individual>
+       </assert>
+   </head>
+</rule>
+
+
+<rule name="External SS_bit_out rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1SM"/>
+            <obr:hasFSMDefinition anonVar="true" >
+                <obr:fsm.hasInputPort variable="_inPort_1">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:fsm.hasInputPort>
+            </obr:hasFSMDefinition>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+            </obr:hasInputPort>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_inPort_1"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+
+<!-- START Signal rule -->
+
+<rule name="External START rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1SM"/>
+            <obr:hasFSMDefinition anonVar="true" >
+                <obr:fsm.hasInSignal variable="_inSignal_1">
+                    <obr:hasName datatype="xsd:string">START</obr:hasName>
+                </obr:fsm.hasInSignal>
+            </obr:hasFSMDefinition>
+            <obr:hasIncomingSignal variable="_inSignal">
+                <obr:hasName datatype="xsd:string">START</obr:hasName>
+            </obr:hasIncomingSignal>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inSignal_1">
+                <obr:drivesSignal variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+
+<rule name="External STOP rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1SM"/>
+            <obr:hasFSMDefinition anonVar="true">
+                <obr:fsm.hasInSignal variable="_inSignal_1">
+                    <obr:hasName datatype="xsd:string">STOP</obr:hasName>
+                </obr:fsm.hasInSignal>
+            </obr:hasFSMDefinition>
+            <obr:hasIncomingSignal variable="_inSignal">
+                <obr:hasName datatype="xsd:string">STOP</obr:hasName>
+            </obr:hasIncomingSignal>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inSignal_1">
+                <obr:drivesSignal variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+
+<rule name="External SS_signal rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1SM"/>
+            <obr:hasFSMDefinition  anonVar="true">
+                <obr:fsm.hasOutputPort variable="_outPort_1">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:fsm.hasOutputPort>
+            </obr:hasFSMDefinition>
+            <obr:hasOutputPort variable="_outPort">
+                <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+            </obr:hasOutputPort>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort_1">
+                <obr:drivesPort variable="_outPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External Jamming_signal rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1SM"/>
+            <obr:hasFSMDefinition anonVar="true">
+                <obr:fsm.hasOutputPort variable="_outPort_1">
+                    <obr:hasName datatype="xsd:string">Jamming_signal</obr:hasName>
+                </obr:fsm.hasOutputPort>
+            </obr:hasFSMDefinition>
+            <obr:hasOutputPort variable="_outPort">
+                <obr:hasName datatype="xsd:string">Jamming_signal</obr:hasName>
+            </obr:hasOutputPort>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort_1">
+                <obr:drivesPort variable="_outPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+</BaseVISor>

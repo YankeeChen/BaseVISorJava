@@ -1,0 +1,554 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+<!-- SS Clock rule -->
+<rule name="SS clock rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent anonVar="true" >
+               <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasExtClock variable="_subCompClk">
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+            </obr:hasSubComponent>
+            <obr:hasExtClock variable="_compClk">
+                <obr:hasName datatype="xsd:string">clk</obr:hasName>
+            </obr:hasExtClock>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_compClk">
+                <obr:drivesClock variable="_subCompClk"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!-- JAMMING clock rule -->
+<rule name="Jamming clock rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent anonVar="true" >
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <obr:hasExtClock variable="_subCompClk">
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+            </obr:hasSubComponent>
+            <obr:hasExtClock variable="_compClk">
+                <obr:hasName datatype="xsd:string">clk</obr:hasName>
+            </obr:hasExtClock>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_compClk">
+                <obr:drivesClock variable="_subCompClk"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!-- MODE1SM clock rule -->
+<rule name="Mode1SM clock rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent anonVar="true" >
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasExtClock variable="_subCompClk">
+                    <obr:hasName datatype="xsd:string">clk</obr:hasName>
+                </obr:hasExtClock>
+            </obr:hasSubComponent>
+            <obr:hasExtClock variable="_compClk">
+                <obr:hasName datatype="xsd:string">clk</obr:hasName>
+            </obr:hasExtClock>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_compClk">
+                <obr:drivesClock variable="_subCompClk"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!-- External Port Rules -->
+<!--rule name="External in_re rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_re</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">in_re</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External in_im rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_im</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">in_im</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule-->
+
+<rule name="External in_data rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_data</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="conduit1 in_data rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">in_data</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External in_direction rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_direction</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="conduit2 in_direction rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">in_direction</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External in_th rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasInputPort variable="_inPort">
+                <obr:hasName datatype="xsd:string">in_th</obr:hasName>
+            </obr:hasInputPort>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_external_conduit3</obr:hasName>
+                <obr:hasInputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_inPort">
+                <obr:drivesPort variable="_subCompPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="conduit3 in_th rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_external_conduit3</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">in_th</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External OutputPort(Jamming_out) rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_subCompPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasOutputPort variable="_outPort">
+                <obr:hasName datatype="xsd:string">Jamming_out</obr:hasName>
+            </obr:hasOutputPort>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_subCompPort">
+                <obr:drivesPort variable="_outPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming_out conduit6 rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">Jamming_out</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<!--rule name="External START Signal rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasIncomingSignal variable="_inSignal">
+                <obr:hasName datatype="xsd:string">Mode1_START</obr:hasName>
+            </obr:hasIncomingSignal>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasIncomingSignal variable="_subCompSignal">
+                    <obr:hasName datatype="xsd:string">START</obr:hasName>
+                </obr:hasIncomingSignal>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_subCompSignal">
+                <obr:drivesSignal variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="External STOP Signal rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasIncomingSignal variable="_inSignal">
+                <obr:hasName datatype="xsd:string">Mode1_STOP</obr:hasName>
+            </obr:hasIncomingSignal>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasIncomingSignal variable="_subCompSignal">
+                    <obr:hasName datatype="xsd:string">STOP</obr:hasName>
+                </obr:hasIncomingSignal>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_subCompSignal">
+                <obr:drivesSignal variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule-->
+
+<rule name="SS_signal conduit7 rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="conduit7 SS_signal rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">SS_signal</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="Jamming_signal conduit5 rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_signal</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_signal_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="conduit5 Jamming_signal rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming_signal_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outSignal">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">Jamming</obr:hasName>
+                <obr:hasInputPort variable="_inSignal">
+                    <obr:hasName datatype="xsd:string">Jamming_signal</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+
+    <head>
+        <assert>
+            <Individual variable="_outSignal">
+                <obr:drivesPort variable="_inSignal"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="SS_bit_out conduit4 rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SpectrumSensing</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+            <obr:hasSubComponent  anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">input_port</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+
+<rule name="conduit4 SS_bit_out rule">
+    <body>
+        <Individual variable="_Ind">
+            <rdf:type resource="concerto:Mode1"/>
+            <obr:hasSubComponent anonVar="true">
+                <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                <obr:hasOutputPort variable="_outPort">
+                    <obr:hasName datatype="xsd:string">output_port</obr:hasName>
+                </obr:hasOutputPort>
+            </obr:hasSubComponent>
+
+            <obr:hasSubComponent anonVar="true">
+                <obr:hasName datatype="xsd:string">Mode1SM</obr:hasName>
+                <obr:hasInputPort variable="_inPort">
+                    <obr:hasName datatype="xsd:string">SS_bit_out</obr:hasName>
+                </obr:hasInputPort>
+            </obr:hasSubComponent>
+        </Individual>
+    </body>
+    <head>
+        <assert>
+            <Individual variable="_outPort">
+                <obr:drivesPort variable="_inPort"/>
+            </Individual>
+        </assert>
+    </head>
+</rule>
+</BaseVISor>

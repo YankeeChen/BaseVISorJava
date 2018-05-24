@@ -1,0 +1,117 @@
+<BaseVISor
+      xmlns:concertoa="http://ece.neu.edu/ontologies/ConcertOlogy_ABox.owl#"
+      xmlns:concerto="http://ece.neu.edu/ontologies/ConcertOlogy.owl#"
+      xmlns:obr="http://ece.neu.edu.crf/OBROntology.owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+      <include lang="BaseVISor" relativePath="Comp_SpectrumSensing.bvr"/>
+      <include lang="BaseVISor" relativePath="Comp_Jamming.bvr" />
+      <include lang="BaseVISor" relativePath="Comp_Mode1SM.bvr" />
+      <include lang="BaseVISor" relativePath="Comp_Conduits.bvr" />
+      <include lang="BaseVISor" relativePath="Comp_Mode1_Connection.bvr"/>
+
+<rule name="Mode1.Composition rule">
+    <body>
+        <triple>
+            <subject variable="_Ind"/>
+            <predicate resource="rdf:type"/>
+            <object resource="concerto:Mode1"/>
+        </triple>
+    </body>
+
+    <head>
+        <bind variable="_Ind.SpectrumSensing">
+            <makeAsset><_Ind/>.SpectrumSensing</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Jamming">
+            <makeAsset><_Ind/>.Jamming</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Mode1SM">
+            <makeAsset><_Ind/>.Mode1SM</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit1">
+            <makeAsset><_Ind/>.Conduit1</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit2">
+            <makeAsset><_Ind/>.Conduit2</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit3">
+            <makeAsset><_Ind/>.Conduit3</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit4">
+            <makeAsset><_Ind/>.Conduit4</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit5">
+            <makeAsset><_Ind/>.Conduit5</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit6">
+            <makeAsset><_Ind/>.Conduit6</makeAsset>
+        </bind>
+
+        <bind variable="_Ind.Conduit7">
+            <makeAsset><_Ind/>.Conduit7</makeAsset>
+        </bind>
+        <assert>
+            <Individual variable="_Ind" rdf:type="owl:NamedIndividual">
+                <obr:hasSubComponent variable="_Ind.SpectrumSensing">
+                    <rdf:type resource="concerto:SpectrumSensing"/>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Jamming">
+                    <rdf:type resource="concerto:Jamming"/>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Mode1SM">
+                    <rdf:type resource="concerto:Mode1SM"/>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit1">
+                    <rdf:type resource="concerto:DataConduit"/>
+                    <obr:hasName datatype="xsd:string">SS_external_conduit1</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit2">
+                    <rdf:type resource="concerto:DataConduit"/>
+                    <obr:hasName datatype="xsd:string">SS_external_conduit2</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit3">
+                    <rdf:type resource="concerto:DataConduit"/>
+                    <obr:hasName datatype="xsd:string">SS_external_conduit3</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit4">
+                    <rdf:type resource="concerto:SWConduit"/>
+                    <obr:hasName datatype="xsd:string">SS_bit_out_conduit</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit5">
+                    <rdf:type resource="concerto:SWConduit"/>
+                    <obr:hasName datatype="xsd:string">Jamming_signal_conduit</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit6">
+                    <rdf:type resource="concerto:DataConduit"/>
+                    <obr:hasName datatype="xsd:string">Jamming_external_conduit</obr:hasName>
+                </obr:hasSubComponent>
+
+                <obr:hasSubComponent variable="_Ind.Conduit7">
+                    <rdf:type resource="concerto:SWConduit"/>
+                    <obr:hasName datatype="xsd:string">SS_signal_conduit</obr:hasName>
+                </obr:hasSubComponent>
+            </Individual>
+        </assert>
+    </head>
+ </rule>
+</BaseVISor>
